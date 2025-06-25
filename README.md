@@ -1,82 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Course Payment</title>
-  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GiganticEarn - Ultimate Money Machine</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      padding: 40px;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
       text-align: center;
     }
-    h2 {
-      color: #222;
+    header {
+      background-color: #ff8c00;
+      padding: 1rem;
     }
-    input, select, button {
-      padding: 10px;
-      margin: 10px;
-      width: 250px;
-      font-size: 16px;
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #000;
     }
-    button {
-      background-color: #ff6600;
-      color: white;
+    section {
+      padding: 2rem 1rem;
+    }
+    .cta-button {
+      background-color: #fff;
+      color: #000;
+      padding: 1rem 2rem;
       border: none;
+      font-size: 1.2rem;
+      border-radius: 5px;
       cursor: pointer;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #e55a00;
+    .cta-button:hover {
+      background-color: #ff8c00;
+      color: #000;
+    }
+    .price-box {
+      background-color: #1a1a1a;
+      border: 1px solid #ff8c00;
+      border-radius: 8px;
+      margin: 1rem auto;
+      padding: 1rem;
+      width: 80%;
+      max-width: 500px;
+    }
+    footer {
+      background-color: #111;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <h2>Buy a Course with Paystack</h2>
+  <header>
+    <h1>Ultimate Money Machine</h1>
+    <p>Turn your phone into a money-printing machine 📱💵</p>
+  </header>
 
-  <input type="email" id="email" placeholder="Enter your email" required><br>
+  <section>
+    <h2>Learn Affiliate Marketing</h2>
+    <p>No skills? No problem. We'll teach you everything step by step.</p>
 
-  <select id="amount" required>
-    <option value="">Select a course</option>
-    <option value="5">Starter Course – $5</option>
-    <option value="10">Intermediate Course – $10</option>
-    <option value="20">Ultimate Money Machine – $20</option>
-  </select><br>
+    <div class="price-box">
+      <h3>Course Price</h3>
+      <p><strong>$4.55</strong> (was ₵50)</p>
+    </div>
 
-  <button onclick="payWithPaystack()">Pay Now</button>
+    <div class="price-box">
+      <h3>Full Premium Pack</h3>
+      <p><strong>$9.09</strong> (was ₵100)</p>
+    </div>
 
-  <script>
-    function payWithPaystack() {
-      var email = document.getElementById("email").value;
-      var amountUSD = document.getElementById("amount").value;
+    <div class="price-box">
+      <h3>WhatsApp Automation + Training</h3>
+      <p><strong>$13.64</strong> (was ₵150)</p>
+    </div>
 
-      if (!email || !amountUSD) {
-        alert("Please enter your email and select a course.");
-        return;
-      }
+    <button class="cta-button" onclick="window.location.href='https://wa.me/233554263293'">Join Now on WhatsApp</button>
+  </section>
 
-      // Convert USD to GHS
-      var exchangeRate = 11;
-      var amountGHS = parseFloat(amountUSD) * exchangeRate;
-      var amountPesewas = parseInt(amountGHS * 100); // Paystack uses pesewas
-
-      var handler = PaystackPop.setup({
-        key: 'pk_live_ddbf47d168d6849ef29050ffc35c98a12e11e38b', // Replace with your own key
-        email: email,
-        amount: amountPesewas,
-        currency: 'GHS',
-        ref: 'AFF' + Math.floor(Math.random() * 1000000000 + 1),
-        callback: function(response) {
-          alert('✅ Payment successful!\nReference: ' + response.reference);
-        },
-        onClose: function() {
-          alert('❌ Transaction cancelled.');
-        }
-      });
-      handler.openIframe();
-    }
-  </script>
+  <footer>
+    &copy; 2025 GiganticEarn. All rights reserved.
+  </footer>
 
 </body>
 </html>
